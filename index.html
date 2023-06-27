@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Age calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap');
+
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    :root{
+
+      /*Primary*/
+         --Purple: hsl(259, 100%, 65%);
+         --LightRed: hsl(0, 100%, 67%);
+
+      /*Netural*/
+        --White: hsl(0, 0%, 100%);
+        --OffWhite: hsl(0, 0%, 94%);
+        --LightGrey: hsl(0, 0%, 86%);
+        --SmokeyGrey: hsl(0, 1%, 44%);
+        --OffBlack: hsl(0, 0%, 8%);
+    }
+
+    *{
+      font-family: "Poppins", sans-serif;
+    }
+
+    body{
+      background-color: var(--OffWhite);
+      font-family: "Poppins", sans-serif;
+    }
+
+    .container{
+      display: flex;
+      background-color: var(--White);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px;
+      height: 500px;
+      width: 700px;
+      border-radius: 20px 20px 200px 20px;
+      
+    } 
+    .day{
+      position: relative;
+      top: 40px;
+      left: 30px;
+    }
+    .month{
+      position: relative;
+      left: 210px;
+      top: -40px;
+    }
+    .year{
+      position: relative;
+      left: 400px;
+      top: -120px;
+    }
+    input{
+      width: 120px;
+      height: 50px;
+    }
+    hr{
+      display: flex;
+      position: relative;
+      top: -80px;
+    }
+    .arrow{
+      position: relative;
+      left: 550px;
+      top: -120px;
+      background-color: var(--Purple);
+      height: 25px;
+      width: 25px;
+      border-radius: 50px;
+      padding: 20px;
+    }
+    .arrow:hover{
+      background-color: black;
+    }
+    title{
+      color: black;
+    }
+    h1{
+      font-size: 80px;
+    }
+    .age{
+      position: relative;
+      left: 170px;
+      top: -160px;
+      line-height: 40px;
+      
+    }
+    .num{
+      position: relative;
+      top: -430px;
+      line-height: 40px;
+      color: var(--Purple);
+ 
+    }
+    input{
+      border-radius: 10px;
+      border: 1px solid var(--LightGrey);
+      font-size: 25px;
+      color: black;
+      font-weight: bold;
+ 
+      
+    }
+    input:hover{
+      border-color: var(--Purple);
+      
+    }
+    input::placeholder{
+      font-size: 25px;
+      font-weight: bold;
+    }
+    input:active{
+      border-color: var(--Purple);
+    }
+    #error{
+      position: relative;
+      top: 40px;
+      left: -120px;
+      font-size: 10px;
+      
+    }
+    #error2{
+      position: relative;
+      top: 40px;
+      left: -120px;
+      font-size: 10px;
+      font-weight: normal;
+
+    }
+    #error3{
+      position: relative;
+      top: 40px;
+      left: -120px;
+      font-size: 10px;
+      font-weight: normal;
+    }
+    .attribution{
+      position: relative;
+      top: 600px;
+      left: -50px;
+    }
+
+    @media screen and (max-width: 800px){
+      .container{
+        width: 450px;
+      }
+      .month{
+        position: relative;
+        left: 160px;
+      }
+      .year{
+        position: relative;
+        left: 290px
+      }
+      input{
+        width: 100px;
+      }
+      .arrow{
+        position: relative;
+        left: 160px; 
+      }
+      hr{
+        width: 400px;
+      }
+      h1{
+        font-size: 60px;
+      }
+      .age{
+        position: relative;
+        top: -115px;
+        left: 130px;
+      }
+      .num{
+        position: relative;
+        top: -350px;
+      }
+      
+    }
+  
+    
+    
+
+    
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <form>
+
+      <div class="day">
+      <label for="day" id="Date1">Day</label><br>
+      <input type="number" id="day" name="day" placeholder="DD">
+      <span id="error"></span>
+      </div>
+
+      <div class="month">
+      <label for="month" id="Date2">Month</label><br>
+      <input type="number" id="month" name="Month" placeholder="MM">
+      <span id="error2"></span>
+      </div>
+
+      <div class="year">
+        <label for="year" id="Date3">Year</label><br>
+        <input type="number" id="year" name="Year" placeholder="YYYY">
+        <span id="error3"></span>
+        </div>
+
+        <hr width="550">
+
+        <img src="./assets/images/icon-arrow.svg" alt="arrow" class="arrow" onclick="result()">
+
+
+       <div class="age">
+        <h1>years</h1>
+        <h1>months</h1>
+        <h1>days</h1> 
+       </div>
+
+       <div class="num">
+        <h1 class="years">- -</h1>
+        <h1 class="months">- -</h1>
+        <h1 class="days">- -</h1>
+       </div>
+        
+        
+    </form>
+
+    
+
+
+  </div>
+
+
+  
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Atharv Adhyapak</a>.
+  </div>
+
+  <script>
+    function result(){
+      var MyDay = document.getElementById("day").value;
+      var MyMonth = document.getElementById("month").value;
+      var MyYear = document.getElementById("year").value;
+
+      var error = document.getElementById("error");
+
+      var dateObj = new Date();
+      var currentYear = dateObj.getFullYear();
+      
+      if(MyDay.length == 0){
+        error.innerText = "Field Can't be empty"
+        error.style.color = "red";
+        document.getElementById("Date1").style.color = "red";
+        document.getElementById("day").style.border = "1px solid red";
+      }
+      else if(MyDay < 1 || MyDay > 31){
+        error.innerText = "Not a valid date"
+        error.style.color = "red";
+        document.getElementById("Date1").style.color = "red";
+        document.getElementById("day").style.border = "1px solid red";
+      }
+      else{
+        document.getElementById("Date1").style = "black";
+        document.getElementById("day").style.border = "1px solid var(--LightGrey)";
+        error.remove();
+        output();
+      }
+  
+      if(MyMonth.length == 0){
+        error2.innerText = "Field Can't be empty"
+        error2.style.color = "red";
+        document.getElementById("Date2").style.color = "red";
+        document.getElementById("month").style.border = "1px solid red";
+      }
+      else if(MyMonth < 1 || MyMonth > 12){
+        error2.innerText = "Not a valid date"
+        error2.style.color = "red";
+        document.getElementById("Date2").style.color = "red";
+        document.getElementById("month").style.border = "1px solid red";
+      }
+      else{
+        document.getElementById("Date2").style = "black";
+        document.getElementById("month").style.border = "1px solid var(--LightGrey)";
+        error2.remove();
+        output();
+      }
+      if(MyYear.length == 0){
+        error3.innerText = "Field Can't be empty"
+        error3.style.color = "red";
+        document.getElementById("Date3").style.color = "red";
+        document.getElementById("year").style.border = "1px solid red";
+      }
+      else if(MyYear > currentYear){
+        error3.innerText = "Not a valid date"
+        error3.style.color = "red";
+        document.getElementById("Date3").style.color = "red";
+        document.getElementById("year").style.border = "1px solid red";
+      }
+      else{
+        document.getElementById("Date3").style = "black";
+        document.getElementById("year").style.border = "1px solid var(--LightGrey)";
+        error3.remove();
+        output();
+      }  
+    }
+    function output(){
+      var MyDay = document.getElementById("day").value;
+      var MyMonth = document.getElementById("month").value;
+      var MyYear = document.getElementById("year").value;
+
+      var dateObj = new Date();
+      var currentYear = dateObj.getFullYear();
+
+      var currentMonth = dateObj.getMonth() + 1;
+
+      var currentDay = dateObj.getDate();
+
+      //Convert user input to String
+
+      var dateString = `${MyYear}-${MyMonth}-${MyDay}`;
+      var birthDate = new Date(dateString);
+      var currentDate = new Date();
+
+      var AgeInMilliseconds =  currentDate - birthDate;
+
+      var seconds = 1000;
+      var minute = seconds*60;
+      var hours =  minute*60;
+      var day = hours*24
+      var month = day*31
+      var year = day*365.25;
+      
+      var AgeInYears = Math.floor(AgeInMilliseconds / year);
+      var Result_in_Years = document.querySelector(".years").innerHTML = AgeInYears
+
+      var AgeInMonths = Math.floor((AgeInMilliseconds % year) / month);
+      var Result_in_Months = document.querySelector(".months").innerHTML = AgeInMonths
+
+      var AgeInDays = Math.floor(((AgeInMilliseconds % year) % month) / day)
+      var Result_in_Days = document.querySelector(".days").innerHTML = AgeInDays
+
+      
+    }
+
+
+
+  </script>
+</body>
+</html>
